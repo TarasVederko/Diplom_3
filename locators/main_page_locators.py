@@ -59,6 +59,9 @@ class MainPageLocators:
     # текст иденитфикатор заказа в окне после оформления заказа
     ORDER_ID_IN_CONFORMATION_WINDOW = (By.XPATH, "//p[text()='идентификатор заказа']")
 
+    # загловок Соберите бургер у кноструктора
+    TITLE_CONSTRUCT_BURGER = (By.XPATH, "//h1[@class='text text_type_main-large mb-5 mt-10']")
+
 
 
 

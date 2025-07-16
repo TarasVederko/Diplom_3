@@ -4,19 +4,14 @@ from url import *
 
 
 @pytest.fixture
-def driver_chrom():
-    driver = webdriver.Chrome()
+def driver(request):
+    browser = request.param
+    if browser == 'driver_chrom':
+        driver = webdriver.Chrome()
+    elif browser == 'driver_fox':
+        driver = webdriver.Firefox()
+
     driver.maximize_window()
     driver.get(main_site)
-
-    yield driver
-    driver.quit()
-
-@pytest.fixture
-def driver_fox():
-    driver = webdriver.Firefox()
-    driver.maximize_window()
-    driver.get(main_site)
-
     yield driver
     driver.quit()
