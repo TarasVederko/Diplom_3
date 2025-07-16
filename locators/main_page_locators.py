@@ -41,7 +41,7 @@ class MainPageLocators:
     # Загловок Детали инградиента
     TITLE_DETAIL_INGREDIENT = (By.XPATH, "//h2[text()='Детали ингредиента']")
 
-    # Кресик в окне детали инградиента
+    # Кресик в окне детали инградиента и подтверждения оформления заказа
     CLOSE_BUTTON_DETAIL_INGREDIENT = (By.XPATH, "//section[@class='Modal_modal_opened__3ISw4 Modal_modal__P3_V5']//button[@class='Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK']")
 
     # кнопка "Лента заказов"
@@ -55,6 +55,10 @@ class MainPageLocators:
 
     # кнопка личный кабинет
     PERSONAL_ACCOUNT_BUTTON = (By.XPATH, "//p[text()='Личный Кабинет']")
+
+    # текст иденитфикатор заказа в окне после оформления заказа
+    ORDER_ID_IN_CONFORMATION_WINDOW = (By.XPATH, "//p[text()='идентификатор заказа']")
+
 
 
 
