@@ -33,6 +33,7 @@ class BasePage:
     def wait_element_disappear(self, locator, timeout=10):
         return WebDriverWait(self.driver, timeout).until(EC.invisibility_of_element_located(locator))
 
+    @allure.step('Перетаскиваем элементы по странице')
     def drag_and_drop(self, source_locator, target_locator):
         """
         Перетаскивает элемент из source_locator в target_locator с использованием JavaScript.
@@ -69,6 +70,13 @@ class BasePage:
             evt.initMouseEvent("dragend", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
             source.dispatchEvent(evt);
         """, element_from, element_to)
+
+    @allure.step("Ввести текст в поле ввода")
+    def send_keys_to_input(self, locator, keys, timeout=10):
+        element = self.wait_for_element(locator, timeout)
+        element.clear()
+        element.send_keys(keys)
+
 
 
 

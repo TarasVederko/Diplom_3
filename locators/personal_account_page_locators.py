@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-class PersonalAccountPage:
+class PersonalAccountPageLocators:
 
     # поле ввода email
     EMAIL_INPUT_FIELD = (By.XPATH, "//input[@name='name']")

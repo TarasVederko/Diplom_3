@@ -58,3 +58,10 @@ class MainPage(BasePage):
         ingredient_locator = MainPageLocators.BUN_R2_D3
         target_locator = MainPageLocators.CONSTRUCTOR_ELEMENT
         self.drag_and_drop(ingredient_locator, target_locator)
+
+    @allure.step('Кликаем кнопку Оформить заказ')
+    def click_make_order(self):
+        self.click_on_element(MainPageLocators.ORDER_BUTTON)
+
+
+
