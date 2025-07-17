@@ -48,7 +48,7 @@ class MainPageLocators:
     ORDER_FEED_BUTTON = (By.XPATH, "//p[text()='Лента Заказов']")
 
     # кнопка Офорить заказ
-    ORDER_BUTON = (By.CLASS_NAME, "button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg")
+    ORDER_BUTTON = (By.CLASS_NAME, "button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg")
 
     # Перетяните булочку сюда (верх)
     CONSTRUCTOR_ELEMENT = (By.XPATH, "//img[@alt='Перетяните булочку сюда (верх)']")
@@ -62,6 +62,8 @@ class MainPageLocators:
     # загловок Соберите бургер у кноструктора
     TITLE_CONSTRUCT_BURGER = (By.XPATH, "//h1[@class='text text_type_main-large mb-5 mt-10']")
 
+    # счетик инградиента
+    INGREDIENT_COUNTER = (By.XPATH, "//p[@class='counter_counter__num__3nue1']")
 
 
 

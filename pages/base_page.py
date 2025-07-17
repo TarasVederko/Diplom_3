@@ -29,6 +29,46 @@ class BasePage:
         element = self.wait_for_element(locator, timeout)
         return element.text
 
+    @allure.step('Ждем пока элемент исчезнет')
+    def wait_element_disappear(self, locator, timeout=10):
+        return WebDriverWait(self.driver, timeout).until(EC.invisibility_of_element_located(locator))
+
+    def drag_and_drop(self, source_locator, target_locator):
+        """
+        Перетаскивает элемент из source_locator в target_locator с использованием JavaScript.
+        :param source_locator: Локатор элемента, который нужно перетащить.
+        :param target_locator: Локатор элемента, куда нужно перетащить.
+        """
+        self.wait_for_element(source_locator)
+        self.wait_for_element(target_locator)
+
+        element_from = self.driver.find_element(*source_locator)
+        element_to = self.driver.find_element(*target_locator)
+
+        self.driver.execute_script("""
+            var source = arguments[0];
+            var target = arguments[1];
+
+            var evt = document.createEvent("DragEvent");
+            evt.initMouseEvent("dragstart", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            source.dispatchEvent(evt);
+
+            evt = document.createEvent("DragEvent");
+            evt.initMouseEvent("dragenter", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            target.dispatchEvent(evt);
+
+            evt = document.createEvent("DragEvent");
+            evt.initMouseEvent("dragover", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            target.dispatchEvent(evt);
+
+            evt = document.createEvent("DragEvent");
+            evt.initMouseEvent("drop", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            target.dispatchEvent(evt);
+
+            evt = document.createEvent("DragEvent");
+            evt.initMouseEvent("dragend", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+            source.dispatchEvent(evt);
+        """, element_from, element_to)
 
 
 
