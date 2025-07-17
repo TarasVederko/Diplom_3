@@ -48,7 +48,7 @@ class MainPageLocators:
     ORDER_FEED_BUTTON = (By.XPATH, "//p[text()='Лента Заказов']")
 
     # кнопка Офорить заказ
-    ORDER_BUTTON = (By.CLASS_NAME, "button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg")
+    ORDER_BUTTON = (By.XPATH, "//button[text()='Оформить заказ']")
 
     # Перетяните булочку сюда (верх)
     CONSTRUCTOR_ELEMENT = (By.XPATH, "//img[@alt='Перетяните булочку сюда (верх)']")
@@ -65,6 +65,12 @@ class MainPageLocators:
     # счетик инградиента
     INGREDIENT_COUNTER = (By.XPATH, "//p[@class='counter_counter__num__3nue1']")
 
+    # крестик в окне подтверждения оформления заказа
+    CLOSE_BUTTON_CONFORMATION_ORDER = (By.XPATH, "//button[@class='Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK']")
 
+    # невидимое окно
+    OVERLAY = (By.XPATH, "//*[contains(@class, 'Modal_modal_overlay')]")
 
+    #номер заказа
+    TITLE_CONFORMATION_ORDER = (By.CLASS_NAME, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')
 

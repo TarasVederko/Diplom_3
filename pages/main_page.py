@@ -1,7 +1,7 @@
 import allure
 from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
-
+from selenium.webdriver.support.ui import WebDriverWait
 
 class MainPage(BasePage):
 
@@ -12,10 +12,6 @@ class MainPage(BasePage):
     @allure.step('Кликаем на кнопку Лента заказов в шапке')
     def click_on_order_feed_button(self):
         self.click_on_element(MainPageLocators.ORDER_FEED_BUTTON)
-
-    @allure.step('Кликаем на кнопку Личный кабинет')
-    def click_on_personal_account_button(self):
-        self.click_on_element(MainPageLocators.PERSONAL_ACCOUNT_BUTTON)
 
     @allure.step('Ждем загрузки меню инградиентов')
     def wait_for_ingredients_menu(self):
@@ -53,15 +49,16 @@ class MainPage(BasePage):
     def get_value_ingredient_counter(self):
         return int(self.get_text_on_element(MainPageLocators.INGREDIENT_COUNTER))
 
-    @allure.step('Добавляем булочку в заказ')
-    def drag_and_drop_ingredient(self):
-        ingredient_locator = MainPageLocators.BUN_R2_D3
-        target_locator = MainPageLocators.CONSTRUCTOR_ELEMENT
-        self.drag_and_drop(ingredient_locator, target_locator)
+    @allure.step('Добавляем булку в заказ')
+    def add_bun_into_constractor(self):
+        bun = self.wait_for_element(MainPageLocators.BUN_R2_D3)
+        constractor = self.wait_for_element(MainPageLocators.CONSTRUCTOR_ELEMENT)
+        self.drag_and_drop_element(bun, constractor)
 
     @allure.step('Кликаем кнопку Оформить заказ')
     def click_make_order(self):
         self.click_on_element(MainPageLocators.ORDER_BUTTON)
 
-
-
+    @allure.step('Закрываем окно подтверждения заказа')
+    def close_conformation_order_window(self):
+        self.click_on_element(MainPageLocators.CLOSE_BUTTON_CONFORMATION_ORDER)

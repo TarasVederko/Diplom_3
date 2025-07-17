@@ -1,8 +1,8 @@
 import allure
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import TimeoutException
+from locators.main_page_locators import MainPageLocators
+from seletools.actions import drag_and_drop
 
 class BasePage:
     def __init__(self, driver):
@@ -14,13 +14,17 @@ class BasePage:
 
     @allure.step('Скролим до элемента')
     def scroll_to_element(self, locator, timeout=10):
-        element = self.wait_for_element(locator, timeout)
+        element = WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
+        #element = self.wait_for_element(locator, timeout)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
-        WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
         return element
 
-    @allure.step('Кликаем на элекмент')
+    @allure.step('Кликаем на элемент')
     def click_on_element(self, locator, timeout=10):
+        try:
+            WebDriverWait(self.driver, timeout).until(EC.invisibility_of_element_located(MainPageLocators.OVERLAY))
+        except:
+            pass
         element = self.scroll_to_element(locator, timeout)
         element.click()
 
@@ -33,53 +37,16 @@ class BasePage:
     def wait_element_disappear(self, locator, timeout=10):
         return WebDriverWait(self.driver, timeout).until(EC.invisibility_of_element_located(locator))
 
-    @allure.step('Перетаскиваем элементы по странице')
-    def drag_and_drop(self, source_locator, target_locator):
-        """
-        Перетаскивает элемент из source_locator в target_locator с использованием JavaScript.
-        :param source_locator: Локатор элемента, который нужно перетащить.
-        :param target_locator: Локатор элемента, куда нужно перетащить.
-        """
-        self.wait_for_element(source_locator)
-        self.wait_for_element(target_locator)
-
-        element_from = self.driver.find_element(*source_locator)
-        element_to = self.driver.find_element(*target_locator)
-
-        self.driver.execute_script("""
-            var source = arguments[0];
-            var target = arguments[1];
-
-            var evt = document.createEvent("DragEvent");
-            evt.initMouseEvent("dragstart", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            source.dispatchEvent(evt);
-
-            evt = document.createEvent("DragEvent");
-            evt.initMouseEvent("dragenter", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            target.dispatchEvent(evt);
-
-            evt = document.createEvent("DragEvent");
-            evt.initMouseEvent("dragover", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            target.dispatchEvent(evt);
-
-            evt = document.createEvent("DragEvent");
-            evt.initMouseEvent("drop", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            target.dispatchEvent(evt);
-
-            evt = document.createEvent("DragEvent");
-            evt.initMouseEvent("dragend", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-            source.dispatchEvent(evt);
-        """, element_from, element_to)
+    @allure.step('Перетащить элемент')
+    def drag_and_drop_element(self, source, target):
+        drag_and_drop(self.driver, source, target)
 
     @allure.step("Ввести текст в поле ввода")
-    def send_keys_to_input(self, locator, keys, timeout=10):
+    def send_keys_to_input(self, locator, text, timeout=10):
         element = self.wait_for_element(locator, timeout)
         element.clear()
-        element.send_keys(keys)
+        element.send_keys(text)
 
-
-
-
-
-
-
+    @allure.step('Переход по url')
+    def navigate_to(self, url):
+        self.driver.get(url)

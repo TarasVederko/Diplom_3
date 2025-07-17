@@ -9,4 +9,4 @@ class PersonalAccountPageLocators:
     PASSWORD_INPUT_FIELD = (By.XPATH, "//input[@name='Пароль']")
 
     # кнопка войти
-    ENTRANCE_BUTTON = (By.CLASS_NAME, "button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa")
+    ENTRANCE_BUTTON = (By.XPATH, "//button[text()='Войти']")
