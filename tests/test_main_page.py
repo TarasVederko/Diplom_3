@@ -53,14 +53,3 @@ class TestMainPage:
         main_page.add_bun_into_constractor()
         new_value = main_page.get_value_ingredient_counter()
         assert new_value == current_value + 2
-
-
-
-
-
-
-
-
-
-
-

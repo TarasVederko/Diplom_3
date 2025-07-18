@@ -73,4 +73,3 @@ class MainPageLocators:
 
     #номер заказа
     TITLE_CONFORMATION_ORDER = (By.CLASS_NAME, 'Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8')
-

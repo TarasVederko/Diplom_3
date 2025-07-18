@@ -15,7 +15,6 @@ class BasePage:
     @allure.step('Скролим до элемента')
     def scroll_to_element(self, locator, timeout=10):
         element = WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
-        #element = self.wait_for_element(locator, timeout)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
         return element
 

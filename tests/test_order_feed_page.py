@@ -5,7 +5,6 @@ from pages.personal_account_page import PersonalAccountPage
 from conftest import *
 from data.account_data import *
 
-
 class TestOrderFeedPage:
 
     @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)
@@ -40,8 +39,3 @@ class TestOrderFeedPage:
 
         with allure.step('Проверям, что счетик заказов за все время увеличился'):
             assert new_value_counter > current_value_counter
-
-
-
-
-

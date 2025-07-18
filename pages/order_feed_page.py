@@ -2,7 +2,6 @@ import allure
 from locators.order_feed_page_locators import OrderFeedPageLocators
 from pages.base_page import BasePage
 
-
 class OrderFeedPage(BasePage):
 
     @allure.step('Ждем загрузку ленты с заказами')

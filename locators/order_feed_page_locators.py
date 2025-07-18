@@ -13,5 +13,3 @@ class OrderFeedPageLocators:
 
     # непосредственно лента с заказами
     ORDER_FEED = (By.CLASS_NAME, "OrderFeed_orderFeed__2RO_j")
-
-
