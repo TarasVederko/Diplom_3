@@ -1,5 +1,3 @@
-import time
-
 import allure
 from pages.main_page import MainPage
 from pages.order_feed_page import OrderFeedPage
@@ -7,6 +5,8 @@ from pages.personal_account_page import PersonalAccountPage
 from conftest import *
 from data.account_data import *
 
+@allure.feature('Лента заказов')
+@allure.story('Тесты функционала ленты заказов')
 class TestOrderFeedPage:
 
     @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)

@@ -63,7 +63,10 @@ class MainPageLocators:
     TITLE_CONSTRUCT_BURGER = (By.XPATH, "//h1[@class='text text_type_main-large mb-5 mt-10']")
 
     # счетик инградиента
-    INGREDIENT_COUNTER = (By.XPATH, "//p[@class='counter_counter__num__3nue1']")
+    INGREDIENT_1_COUNTER = (By.XPATH, "//a[contains(@href,'/ingredient/61c0c5a71d1f82001bdaaa6d')]//p[@class='counter_counter__num__3nue1']")
+
+    # счетчик второго инградиента
+    INGREDIENT_2_COUNTER = (By.XPATH, "//a[contains(@href,'/ingredient/61c0c5a71d1f82001bdaaa6c')]//p[@class='counter_counter__num__3nue1']")
 
     # крестик в окне подтверждения оформления заказа
     CLOSE_BUTTON_CONFORMATION_ORDER = (By.XPATH, "//button[@class='Modal_modal__close_modified__3V5XS Modal_modal__close__TnseK']")

@@ -35,7 +35,7 @@ class MainPage(BasePage):
 
     @allure.step('Ждем пока окно с деталями исчезнет')
     def wait_details_window_disappear(self):
-        self.wait_element_disappear(MainPageLocators.WINDOW_DETAIL_INGREDIENT)
+        return bool(self.wait_element_disappear(MainPageLocators.WINDOW_DETAIL_INGREDIENT))
 
     @allure.step('Получаем текс заголова окна детали инградиента')
     def get_text_title_details_window(self):
@@ -45,11 +45,11 @@ class MainPage(BasePage):
     def click_on_cross_details_window(self):
         self.click_on_element(MainPageLocators.CLOSE_BUTTON_DETAIL_INGREDIENT)
 
-    @allure.step('Получаем значение счетчика инградиента')
-    def get_value_ingredient_counter(self):
-        return int(self.get_text_on_element(MainPageLocators.INGREDIENT_COUNTER))
+    @allure.step('Получаем значение счетчика 1-го инградиента')
+    def get_value_ingredient_1_counter(self):
+        return int(self.get_text_on_element(MainPageLocators.INGREDIENT_1_COUNTER))
 
-    @allure.step('Добавляем булку в заказ')
+    @allure.step('Добавляем булку BUN_R2_D3 в заказ')
     def add_bun_into_constractor(self):
         bun = self.wait_for_element(MainPageLocators.BUN_R2_D3)
         constractor = self.wait_for_element(MainPageLocators.CONSTRUCTOR_ELEMENT)

@@ -56,3 +56,7 @@ class BasePage:
     def find_and_wait_until_text_changes(self, locator, initial_text, timeout=30):
         self.wait_until_condition(lambda _: self.get_text_on_element(locator) != initial_text, timeout)
         return self.scroll_to_element(locator)
+
+    @allure.step('Получение текущего url страницы')
+    def get_current_url(self):
+        return self.driver.current_url
