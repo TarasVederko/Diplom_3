@@ -13,3 +13,9 @@ class OrderFeedPageLocators:
 
     # непосредственно лента с заказами
     ORDER_FEED = (By.CLASS_NAME, "OrderFeed_orderFeed__2RO_j")
+
+    # список заказов В работе
+    ORDER_FEED_IN_PROGRESS = (By.XPATH, "//ul[contains(@class, 'OrderFeed_orderListReady')]/li[1]")
+
+    # номер заказа в окне подтверждения заказа
+    ORDER_NUMBER_IN_CONFORMATION_WINDOW = (By.XPATH, "//h2[@class='Modal_modal__title_shadow__3ikwq Modal_modal__title__2L34m text text_type_digits-large mb-8']")

@@ -1,5 +1,6 @@
 import allure
 from locators.main_page_locators import MainPageLocators
+from locators.order_feed_page_locators import OrderFeedPageLocators
 from pages.base_page import BasePage
 
 class MainPage(BasePage):
@@ -60,4 +61,5 @@ class MainPage(BasePage):
 
     @allure.step('Закрываем окно подтверждения заказа')
     def close_conformation_order_window(self):
+        self.find_and_wait_until_text_changes(OrderFeedPageLocators.ORDER_NUMBER_IN_CONFORMATION_WINDOW, "9999")
         self.click_on_element(MainPageLocators.CLOSE_BUTTON_CONFORMATION_ORDER)

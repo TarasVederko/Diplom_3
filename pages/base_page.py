@@ -49,3 +49,10 @@ class BasePage:
     @allure.step('Переход по url')
     def navigate_to(self, url):
         self.driver.get(url)
+
+    @allure.step('Ждем изменения элемента')
+    def wait_until_condition(self, condition, timeout=30):
+        WebDriverWait(self.driver, timeout).until(condition)
+    def find_and_wait_until_text_changes(self, locator, initial_text, timeout=30):
+        self.wait_until_condition(lambda _: self.get_text_on_element(locator) != initial_text, timeout)
+        return self.scroll_to_element(locator)
