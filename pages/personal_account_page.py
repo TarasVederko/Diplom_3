@@ -11,8 +11,18 @@ class PersonalAccountPage(BasePage):
 
     @allure.step('Логинимся в системе')
     def entrance_in_personal_account(self, email, password):
-        self.open_login_page()
-        self.send_keys_to_input(PersonalAccountPageLocators.EMAIL_INPUT_FIELD, email)
-        self.send_keys_to_input(PersonalAccountPageLocators.PASSWORD_INPUT_FIELD, password)
-        self.click_on_element(PersonalAccountPageLocators.ENTRANCE_BUTTON)
-        self.wait_for_element(MainPageLocators.INGREDIENTS_MENU)
+
+        with allure.step('Открываем страницу входа в личный кабинет'):
+            self.open_login_page()
+
+        with allure.step('Заполняем поле email'):
+            self.send_keys_to_input(PersonalAccountPageLocators.EMAIL_INPUT_FIELD, email)
+
+        with allure.step('Заполняем поле пароль'):
+            self.send_keys_to_input(PersonalAccountPageLocators.PASSWORD_INPUT_FIELD, password)
+
+        with allure.step('Кликаем на кнопку Войти'):
+            self.click_on_element(PersonalAccountPageLocators.ENTRANCE_BUTTON)
+
+        with allure.step('Ждем пока загрузится меню с булками/соусами/начинками'):
+            self.wait_for_element(MainPageLocators.INGREDIENTS_MENU)
