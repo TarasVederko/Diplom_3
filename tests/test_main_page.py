@@ -9,7 +9,6 @@ from conftest import *
 @allure.story('Тесты функционала главной страницы')
 class TestMainPage:
 
-    @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)
     @allure.title('Тестируем переход в кноструктор')
     def test_switch_to_constructor(self, driver):
         main_page = MainPage(driver)
@@ -27,7 +26,6 @@ class TestMainPage:
             assert main_page.get_current_url() == main_site
 
 
-    @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)
     @allure.title('Тестируем переход в ленту заказов')
     def test_switch_to_order_feed(self, driver):
         main_page = MainPage(driver)
@@ -43,7 +41,6 @@ class TestMainPage:
             assert main_page.get_current_url() == orders_feed_url
 
 
-    @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)
     @allure.title('Тестируем появление окна с деталями после клика на инградиент')
     def test_details_window_of_ingredient(self, driver):
         main_page = MainPage(driver)
@@ -58,7 +55,6 @@ class TestMainPage:
             assert main_page.get_text_title_details_window() == TEXT_TITLE_DETAIL_INGREDINET
 
 
-    @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)
     @allure.title('Тестируем закрытие окна детали инградиента кликом по крестику')
     def test_close_window_of_ingredient(self,driver):
         main_page = MainPage(driver)
@@ -76,7 +72,6 @@ class TestMainPage:
             assert main_page.wait_details_window_disappear() is True
 
 
-    @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)
     @allure.title('Тестируем при добавлении ингредиента в заказ счётчик этого ингредиента увеличивается.')
     def test_increase_ingredient_counter(self, driver):
         main_page = MainPage(driver)

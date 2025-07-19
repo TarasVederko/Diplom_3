@@ -1,9 +1,11 @@
 import pytest
 from selenium import webdriver
+from urllib3 import request
+
 from url import *
 
 
-@pytest.fixture
+@pytest.fixture(params=['driver_chrom', 'driver_fox'])
 def driver(request):
     browser = request.param
     if browser == 'driver_chrom':

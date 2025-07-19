@@ -9,7 +9,6 @@ from data.account_data import *
 @allure.story('Тесты функционала ленты заказов')
 class TestOrderFeedPage:
 
-    @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)
     @allure.title('Тестируем при создании нового заказа счетчик заказов за все время обновляется ')
     def test_increasing_orders_counter_full_time(self, driver):
         main_page = MainPage(driver)
@@ -46,7 +45,6 @@ class TestOrderFeedPage:
         with allure.step('Проверям, что счетик заказов за все время увеличился'):
             assert new_value_counter > current_value_counter
 
-    @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)
     @allure.title('Тестируем при создании нового заказа счетчик заказов за все сегодня обновляется ')
     def test_increasing_orders_counter_today(self, driver):
         main_page = MainPage(driver)
@@ -84,7 +82,6 @@ class TestOrderFeedPage:
             assert new_value_counter > current_value_counter
 
 
-    @pytest.mark.parametrize('driver', ['driver_chrom', 'driver_fox'], indirect=True)
     @allure.title('Тестируем новый заказ отображается в спике В работе в окне Лента заказов')
     def test_add_orders_to_feed_in_progress(self, driver):
         main_page = MainPage(driver)
