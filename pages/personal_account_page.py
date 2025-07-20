@@ -6,6 +6,7 @@ from url import *
 
 class PersonalAccountPage(BasePage):
 
+    @allure.step('переходим на страницу входа в личный кабинет')
     def open_login_page(self):
         self.navigate_to(login_url)
 
